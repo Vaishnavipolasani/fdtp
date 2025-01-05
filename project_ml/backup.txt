@@ -1,0 +1,62 @@
+from flask import Flask, request, render_template
+import joblib
+import os
+
+app = Flask(__name__)
+
+# Define the path to the model file
+# model_path = os.path.join(os.path.Fooddelivery(_file_), 'model1.pkl')
+
+# Load the model
+model = joblib.load('model1.pkl')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        features = [
+            float(request.form['Delivery_person_Ratings']),
+            float(request.form['Restaurant_latitude']),
+            float(request.form['Restaurant_longitude']),
+            float(request.form['Delivery_location_latitude']),
+            float(request.form['Delivery_location_longitude']),
+            int(request.form['Weather_conditions']),
+            int(request.form['Road_traffic_density']),
+            int(request.form['Vehicle_condition']),
+            int(request.form['Type_of_order']),
+            int(request.form['Type_of_vehicle']),
+            float(request.form['multiple_deliveries']),
+            int(request.form['Festival']),
+            int(request.form['City']),
+            int(request.form['City_code']),
+            int(request.form['day']),
+            int(request.form['month']),
+            int(request.form['quarter']),
+            int(request.form['year']),
+            int(request.form['day_of_week']),
+            int(request.form['is_month_start']),
+            int(request.form['is_month_end']),
+            int(request.form['is_quarter_start']),
+            int(request.form['is_quarter_end']),
+            int(request.form['is_year_start']),
+            int(request.form['is_year_end']),
+            int(request.form['is_weekend']),
+            float(request.form['order_prepare_time']),
+            float(request.form['distance'])
+        ]
+
+        prediction = model.predict([features])
+        result = prediction[0]
+
+        return render_template('result.html', prediction=result)
+    except Exception as e:
+        return str(e)
+
+
+if __name__ == '_main_':
+    app.run(debug=True)

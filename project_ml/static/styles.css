@@ -1,0 +1,117 @@
+body {
+  background-color: rgb(116, 223, 220);
+  font-family: Arial, sans-serif;
+}
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: #17586b00; /* Background color of the track */
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(18, 102, 181, 0.614);
+  border-radius: 5px; /* Roundness of the thumb */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 86, 161, 0.732); /* Color of the thumb on hover */
+}
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+}
+
+input[type="text"],
+input[type="submit"] {
+  width: 102.76%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+}
+h1 {
+  text-align: center; /* Center h1 text horizontally */
+}
+input[type="submit"] {
+  background-color: #2d34a09c;
+  color: white;
+  border: none;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e0f4b6e;
+}
+
+input[type="text"] {
+  /* Set the width of the input boxes */
+  width: 100%;
+
+  /* Set the height of the input boxes */
+  height: 40px;
+
+  /* Add some padding for a better look */
+  padding: 0 10px;
+
+  /* Set the border-radius to make the corners rounded */
+  border-radius: 5px;
+
+  /* Set the border style, width, and color */
+  border: 1px solid #ccc;
+
+  /* Set the font style, size, and color */
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+
+  /* Add a box-shadow for a 3D effect */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
+  /* Transition for a smooth change when the input box is focused */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Style for the input box when it is focused */
+input[type="text"]:focus {
+  /* Change the border color when the input box is focused */
+  border-color: #55aaff;
+
+  /* Change the box-shadow when the input box is focused */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 0 10px rgba(85, 170, 255, 0.5);
+}
+
+.weather-conditions,
+.yes-no-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.weather-btn,
+.yes-no-btn {
+  width: 100px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  margin-right: 10px;
+}
+
+.weather-btn:last-child,
+.yes-no-btn:last-child {
+  margin-right: 0;
+}
+
+.weather-btn.active,
+.yes-no-btn.active {
+  background-color: #55aaff;
+  border-color: #55aaff;
+  color: #fff;
+}

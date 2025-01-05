@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="inner-cursor"></div>
+    <h1>Prediction Result</h1>
+    <p>Predicted Delivery Time: {{ prediction }} minutes</p>
+    <a href="/">Back to Form</a>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

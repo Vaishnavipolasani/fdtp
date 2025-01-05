@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Food Delivery Time Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>Food Delivery Time Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="Delivery_person_Ratings">Delivery Person Ratings:</label>
+        <input type="text" id="Delivery_person_Ratings" name="Delivery_person_Ratings" required><br><br>
+
+        <label for="Restaurant_latitude">Restaurant Latitude:</label>
+        <input type="text" id="Restaurant_latitude" name="Restaurant_latitude" required><br><br>
+
+        <label for="Restaurant_longitude">Restaurant Longitude:</label>
+        <input type="text" id="Restaurant_longitude" name="Restaurant_longitude" required><br><br>
+
+        <label for="Delivery_location_latitude">Delivery Location Latitude:</label>
+        <input type="text" id="Delivery_location_latitude" name="Delivery_location_latitude" required><br><br>
+
+        <label for="Delivery_location_longitude">Delivery Location Longitude:</label>
+        <input type="text" id="Delivery_location_longitude" name="Delivery_location_longitude" required><br><br>
+        <label for="weather-conditions">Weather Conditions:</label><br>
+        <div class="weather-conditions">
+            <button class="weather-btn" type="button" value="0" onclick="setWeatherCondition(0)">Cloudy</button>
+            <button class="weather-btn" type="button" value="1" onclick="setWeatherCondition(1)">Fog</button>
+            <button class="weather-btn" type="button" value="2" onclick="setWeatherCondition(2)">Sandstorm</button>
+            <button class="weather-btn" type="button" value="3" onclick="setWeatherCondition(3)">Stormy</button>
+            <button class="weather-btn" type="button" value="4" onclick="setWeatherCondition(4)">Sunny</button>
+            <button class="weather-btn" type="button" value="5" onclick="setWeatherCondition(5)">Windy</button>
+            <input type="hidden" id="weather-conditions" name="weather-conditions">
+        </div>
+        <label for="Road_traffic_density">Road_traffic_density:</label>
+        <input type="text" id="Road_traffic_density" name="Road_traffic_density" required><br>
+        <label for="Vehicle_condition">Vehicle_condition:</label>
+        <input type="text" id="Vehicle_condition" name="Vehicle_condition" required><br><br>
+        <label for="Type_of_order">Type_of_order:</label>
+        <input type="text" id="Type_of_order" name="Type_of_order" required><br><br>
+        <label for="Type_of_vehicle">Type_of_vehicle:</label>
+        <input type="text" id="Type_of_vehicle" name="Type_of_vehicle" required><br><br>
+        <label for="multiple_deliveries">Multiple Deliveries:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1" onclick="setYesNo('multiple_deliveries', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setYesNo('multiple_deliveries', 0)">No</button>
+            <input type="hidden" id="multiple_deliveries" name="multiple_deliveries">
+        </div>
+
+        <label for="Festival">Festival:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1" onclick="setYesNo('Festival', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setYesNo('Festival', 0)">No</button>
+            <input type="hidden" id="Festival" name="Festival">
+        </div>
+
+
+        <label for="City">City:</label>
+        <input type="text" id="City" name="City" required><br><br>
+        <label for="City_code">City_code:</label>
+        <input type="text" id="City_code" name="City_code" required><br><br>
+        <label for="day">day:</label>
+        <input type="text" id="day" name="day" required><br><br>
+        <label for="month">month:</label>
+        <input type="text" id="month" name="month" required><br><br>
+        <label for="quarter">quarter:</label>
+        <input type="text" id="quarter" name="quarter" required><br><br>
+        <label for="year">year:</label>
+        <input type="text" id="year" name="year" required><br><br>
+        <label for="day_of_week">day_of_week:</label>
+        <input type="text" id="day_of_week" name="day_of_week" required><br><br>
+
+        <label for="is_month_start">Is Month Start:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1"
+                onclick="setOptionValue('is_month_start', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setOptionValue('is_month_start', 0)">No</button>
+            <input type="hidden" id="is_month_start" name="is_month_start">
+        </div><br>
+
+        <label for="is_month_end">Is Month End:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1" onclick="setOptionValue('is_month_end', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setOptionValue('is_month_end', 0)">No</button>
+            <input type="hidden" id="is_month_end" name="is_month_end">
+        </div><br>
+
+        <label for="is_quarter_start">Is Quarter Start:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1"
+                onclick="setOptionValue('is_quarter_start', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0"
+                onclick="setOptionValue('is_quarter_start', 0)">No</button>
+            <input type="hidden" id="is_quarter_start" name="is_quarter_start">
+        </div><br>
+
+        <label for="is_quarter_end">Is Quarter End:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1"
+                onclick="setOptionValue('is_quarter_end', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setOptionValue('is_quarter_end', 0)">No</button>
+            <input type="hidden" id="is_quarter_end" name="is_quarter_end">
+        </div><br>
+
+        <label for="is_year_start">Is Year Start:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1" onclick="setOptionValue('is_year_start', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setOptionValue('is_year_start', 0)">No</button>
+            <input type="hidden" id="is_year_start" name="is_year_start">
+        </div><br>
+
+        <label for="is_year_end">Is Year End:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1" onclick="setOptionValue('is_year_end', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setOptionValue('is_year_end', 0)">No</button>
+            <input type="hidden" id="is_year_end" name="is_year_end">
+        </div><br>
+
+        <label for="is_weekend">Is Weekend:</label><br>
+        <div class="yes-no-options">
+            <button class="yes-no-btn" type="button" value="1" onclick="setOptionValue('is_weekend', 1)">Yes</button>
+            <button class="yes-no-btn" type="button" value="0" onclick="setOptionValue('is_weekend', 0)">No</button>
+            <input type="hidden" id="is_weekend" name="is_weekend">
+        </div><br>
+
+
+
+
+        <label for="order_prepare_time">order_prepare_time:</label>
+        <input type="text" id="order_prepare_time" name="order_prepare_time" required><br><br>
+        <label for="distance">Distance:</label>
+        <input type="text" id="distance" name="distance" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
